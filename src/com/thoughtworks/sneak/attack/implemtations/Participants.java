@@ -1,15 +1,29 @@
 package com.thoughtworks.sneak.attack.implemtations;
 
-public class Participants {
+import java.util.HashMap;
+
+import com.thoughtworks.sneak.attack.interfaces.Role;
+
+public class Participants extends Role{
 	
-	String name;
-	boolean isKiller;
+	private String name;
+	//boolean isKiller;
 	boolean isKilled;
+	static Participants killer;
 	
+	public Participants() {
+		
+	}
 	Participants(String name) {
 		this.name = name;
+		//this.isKiller = false;
+		this.isKilled = false;
+		initializeRole();
 	}
 	
+	public String getName() {
+		return name;
+	}
 	
 	public Participants[] getParticipants(int count) {
 		
