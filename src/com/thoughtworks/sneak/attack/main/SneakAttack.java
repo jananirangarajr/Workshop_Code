@@ -21,6 +21,7 @@ public class SneakAttack {
 		host.createParticipants();
 		host.selectKiller();
 		host.addInnocents();
+		host.selectHealer(); // iteration #4
 		host.printStatus();
 		
 		System.out.println("-----------------------------------------------------------------------");
@@ -40,7 +41,6 @@ public class SneakAttack {
 			host.addInnocents();
 			System.out.println("Round "+(i++));
 			ArrayList<Participant> innocentList = host.getInnocents();
-			host.selectHealer(); // iteration #4
 			healer.save(innocentList); //iteration #4
 			killer.kill(innocentList);
 			host.getSuspetedParticipant();
@@ -50,6 +50,8 @@ public class SneakAttack {
 				break;
 			}
 			host.printRemaining();
+			host.clearHealer(); //iteration #4
+			host.selectHealer(); // iteration #4
 		}
 		
 		System.out.println("-----------------------------------------------------------------------");

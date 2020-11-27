@@ -146,4 +146,14 @@ public class Coordinator {
 		System.out.println();
 	}
 
+	public void clearHealer() {
+		
+		for (int i = 0; i < participants.length; i++) {
+			if(participants[i].isSaved) {
+				participants[i].isSaved = false;
+			}
+		}
+		
+	}
+
 }
