@@ -1,9 +1,11 @@
 package com.thoughtworks.sneak.attack.main;
 
+import java.util.ArrayList;
+
 import com.thoughtworks.sneak.attack.implemtations.Coordinator;
 import com.thoughtworks.sneak.attack.implemtations.Game;
+import com.thoughtworks.sneak.attack.implemtations.Killer;
 import com.thoughtworks.sneak.attack.implemtations.Participants;
-import com.thoughtworks.sneak.attack.implemtations.Play;
 
 public class SneakAttack {
 	
@@ -18,9 +20,21 @@ public class SneakAttack {
 		Coordinator host = new Coordinator(total_participants);
 		host.selectKiller(participants);
 		host.printStatus(participants);
-		
-		Play play = new Play(participants);
-		play.killEveryOne();
+		//version 2
+		//host.killEveryOne(participants);
+		//Version 3
+		Killer killer = new Killer();
+		for (int i = 0; i < total_participants; i++) {
+			
+			ArrayList<Participants> innocentList = host.getInnocents(participants);
+			killer.kill(innocentList);
+			
+			Participants suspectedParticipant = host.getSuspetedParticipant();
+			boolean isGameAlive = host.KillSuspected(suspectedParticipant);
+			if(!isGameAlive) {
+				break;
+			}
+		}
 		
 	}
 

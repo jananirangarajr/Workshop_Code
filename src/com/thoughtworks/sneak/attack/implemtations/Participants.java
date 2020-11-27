@@ -6,22 +6,23 @@ import com.thoughtworks.sneak.attack.interfaces.Role;
 
 public class Participants extends Role{
 	
-	private String name;
+	private int name;
 	//boolean isKiller;
 	boolean isKilled;
 	static Participants killer;
+	int Suspected;
 	
 	public Participants() {
 		
 	}
-	Participants(String name) {
+	Participants(int name) {
 		this.name = name;
 		//this.isKiller = false;
 		this.isKilled = false;
 		initializeRole();
 	}
 	
-	public String getName() {
+	public int getName() {
 		return name;
 	}
 	
@@ -30,12 +31,14 @@ public class Participants extends Role{
 		Participants[] particiapants = new Participants[count];
 		
 		for (int i = 0; i < count; i++) {
-			String prefix = "P";
-			Participants participant = new Participants(prefix+i);
+			//String prefix = "P";
+			Participants participant = new Participants(+i);
 			particiapants[i] = participant;
 			
 		}
 		return particiapants;	
 	}
+	
+	//public void suspectOther(ArrayList<Partici>)
 	
 }
