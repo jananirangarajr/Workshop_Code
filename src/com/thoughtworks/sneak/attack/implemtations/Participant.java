@@ -10,7 +10,9 @@ public class Participant extends Role{
 	//boolean isKiller;
 	boolean isKilled;
 	static Participant killer;
+	static Participant Healer;
 	int Suspected = -1;
+	boolean isSaved = false;
 	
 	public Participant() {
 		
@@ -38,7 +40,5 @@ public class Participant extends Role{
 		}
 		return particiapants;	
 	}
-	
-	//public void suspectOther(ArrayList<Partici>)
 	
 }

@@ -13,6 +13,7 @@ public class Killer {
 	public void kill(ArrayList<Participant> innocentList) {
 		int randomNumber = SneakUtil.getInstance().getRandomNumber(innocentList.size());
 		System.out.println("P"+killer.getName()+" killed P"+innocentList.get(randomNumber).getName());
+		innocentList.get(randomNumber).isKilled=true;
 		innocentList.remove(randomNumber);
 	}
 	

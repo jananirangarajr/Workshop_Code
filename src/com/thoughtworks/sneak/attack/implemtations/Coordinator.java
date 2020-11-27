@@ -34,6 +34,7 @@ public class Coordinator {
 	
 	//Method to add innocents
 	public void addInnocents() {
+		innocentList.removeAll(innocentList);
 		for (int i = 0 ; i < participants.length; i++) {
 			if (!participants[i].isKiller() && !participants[i].isKilled) {
 				innocentList.add(participants[i]);
@@ -50,6 +51,7 @@ public class Coordinator {
 	public void selectHealer() {
 		int randomIndex = SneakUtil.getInstance().getRandomNumber(innocentList.size());
 		participants[randomIndex].setHealer();
+		Participant.Healer = participants[randomIndex];
 	}
 	
 	//method to print innocent/healer/killer
@@ -94,10 +96,10 @@ public class Coordinator {
 		
 		for (int i = 0;  i < killParticipants.size(); i++) {
 			int killPersonIndex = killParticipants.get(i);
-			if (participants[killPersonIndex].isKiller()) {
+			if (participants[killPersonIndex].isKiller() && !participants[killPersonIndex].isSaved) {
 				isAlive = false;
 			}
-			else if(!participants[killPersonIndex].isKilled) {
+			else if(!participants[killPersonIndex].isKilled && !participants[killPersonIndex].isSaved) {
 				participants[killPersonIndex].isKilled = true;
 			}
 		}
@@ -135,12 +137,13 @@ public class Coordinator {
 //		for (int i = 0; i < innocentList.size(); i++) {
 //			System.out.println("P"+innocentList.get(i).getName()+" is alive");
 //		}
+		System.out.println("Remaining List");
 		for (int i = 0; i < participants.length; i++) {
 			if (!participants[i].isKilled) {
-				System.out.print("P"+participants[i].getName()+" is Alive");
+				System.out.print("P"+participants[i].getName()+",");
 			}
 		}
-		
+		System.out.println();
 	}
 
 }
