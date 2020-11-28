@@ -50,8 +50,8 @@ public class SneakAttack {
 				break;
 			}
 			host.printRemaining();
-			host.clearHealer(); //iteration #4
-			host.selectHealer(); // iteration #4
+			//host.clearHealer(); //iteration #4
+			//host.selectHealer(); // iteration #4
 		}
 		
 		System.out.println("-----------------------------------------------------------------------");

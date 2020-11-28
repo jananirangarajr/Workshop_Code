@@ -10,9 +10,13 @@ public class Healer {
 
 	public void save(ArrayList<Participant> innocents) {
 		
-		int randomNumber = SneakUtil.getInstance().getRandomNumber(innocents.size());
-		innocents.get(randomNumber).isSaved = true;
-		
+		if(!healer.isKilled) {
+
+			int randomNumber = SneakUtil.getInstance().getRandomNumber(innocents.size());
+			innocents.get(randomNumber).isSaved = true;
+			innocents.remove(randomNumber);
+			System.out.println("P"+healer.getName()+" heales P"+innocents.get(randomNumber).getName());
+		}
 	}
 
 }
