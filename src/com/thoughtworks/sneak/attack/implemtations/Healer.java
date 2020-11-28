@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import com.thoughtworks.sneak.attack.util.SneakUtil;
 
-public class Healer {
+public class Healer extends Participant {
 	
-	Participant healer = Participant.Healer;
+	//Participant healer = Participant.Healer;
 
 	public void save(ArrayList<Participant> innocents) {
 		

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import com.thoughtworks.sneak.attack.util.SneakUtil;
 
-public class Killer {
+public class Killer extends Participant{
 	
-	Participant killer = Participant.killer;
+	//Participant killer = Participant.killer;
 	
 	//Interation 3
 	//Method to kill one person

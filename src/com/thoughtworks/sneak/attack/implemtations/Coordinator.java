@@ -39,9 +39,18 @@ public class Coordinator {
 			if (!participants[i].isKiller() && !participants[i].isKilled) {
 				innocentList.add(participants[i]);
 			}
-		}	
+		}
+		clearSuspectAndSaved(); // iteration 6
 	}
-	
+
+	private void clearSuspectAndSaved() {
+		for (int i = 0 ; i < innocentList.size(); i++) {
+			innocentList.get(i).isSaved=false;
+			innocentList.get(i).Suspected=-1;
+		}
+		
+	}
+
 	//Method to get Innocents
 	public ArrayList<Participant> getInnocents() {
 		return innocentList;
@@ -51,7 +60,7 @@ public class Coordinator {
 	public void selectHealer() {
 		int randomIndex = SneakUtil.getInstance().getRandomNumber(innocentList.size());
 		participants[randomIndex].setHealer();
-		Participant.Healer = participants[randomIndex];
+		Participant.healer = participants[randomIndex];
 	}
 	
 	//method to print innocent/healer/killer
@@ -73,14 +82,9 @@ public class Coordinator {
 	}
 
 	public void getSuspetedParticipant() {
-		ArrayList<Participant> suspectedList = (ArrayList<Participant>) innocentList.clone();
-		for (int i = 0; i < innocentList.size();i++) {
-			suspectedList.remove(i);
-			int randomInt = SneakUtil.getInstance().getRandomNumber(suspectedList.size());
-			int suspectedName = suspectedList.get(randomInt) .getName();
-			innocentList.get(i).Suspected = suspectedName;
-			suspectedList = (ArrayList<Participant>) innocentList.clone();
-		}
+		
+		Innocent innocent = new Innocent();
+		innocentList = innocent.SuspectOne(innocentList);
 	}
 
 
@@ -154,6 +158,20 @@ public class Coordinator {
 			}
 		}
 		
+	}
+
+	public void selectSherLock() {
+		
+		int randomIndex = SneakUtil.getInstance().getRandomNumber(innocentList.size());
+		if (!innocentList.get(randomIndex).isKiller() && !innocentList.get(randomIndex).isHealer()) {
+			innocentList.get(randomIndex).setHealer();
+			Participant.sherlock = innocentList.get(randomIndex)
+;			return;
+		}
+		else {
+			selectSherLock();
+		}
+		return;
 	}
 
 }

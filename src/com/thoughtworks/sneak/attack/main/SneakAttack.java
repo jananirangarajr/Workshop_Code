@@ -7,6 +7,7 @@ import com.thoughtworks.sneak.attack.implemtations.Game;
 import com.thoughtworks.sneak.attack.implemtations.Healer;
 import com.thoughtworks.sneak.attack.implemtations.Killer;
 import com.thoughtworks.sneak.attack.implemtations.Participant;
+import com.thoughtworks.sneak.attack.implemtations.Sherlock;
 
 public class SneakAttack {
 	
@@ -22,6 +23,7 @@ public class SneakAttack {
 		host.selectKiller();
 		host.addInnocents();
 		host.selectHealer(); // iteration #4
+		host.selectSherLock(); // iteration #5
 		host.printStatus();
 		
 		System.out.println("-----------------------------------------------------------------------");
@@ -35,14 +37,23 @@ public class SneakAttack {
 		//version 4
 		Healer healer = new Healer();
 		
+		//version 6
+		Sherlock sherlock = new Sherlock();
+		
 		//Version 3
 		int i = 1;
 		while(true) {
 			host.addInnocents();
 			System.out.println("Round "+(i++));
 			ArrayList<Participant> innocentList = host.getInnocents();
+			
 			healer.save(innocentList); //iteration #4
-			killer.kill(innocentList);
+			
+			killer.kill(innocentList); //# iteration 3
+			
+			sherlock.check(innocentList); // iteration 6
+			
+			//# iteration 3
 			host.getSuspetedParticipant();
 			host.printSuspected();
 			boolean isGameAlive = host.KillSuspected();
@@ -50,8 +61,6 @@ public class SneakAttack {
 				break;
 			}
 			host.printRemaining();
-			//host.clearHealer(); //iteration #4
-			//host.selectHealer(); // iteration #4
 		}
 		
 		System.out.println("-----------------------------------------------------------------------");

@@ -10,6 +10,7 @@ public abstract class Role {
     	 roles.put("killer", false);
     	 roles.put("innocnet", true);
     	 roles.put("healer", false);
+    	 roles.put("sherlock", false); //#6
      }
      
      public void setKiller() {
@@ -27,5 +28,12 @@ public abstract class Role {
      
      public boolean isHealer() {
     	return roles.get("healer");
+     }
+     
+     public void setSherLock() {
+    	 roles.put("sherlock", true);
+     }
+     public boolean isSherLock() {
+    	 return roles.get("sherlock");
      }
 }

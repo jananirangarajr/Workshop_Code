@@ -1,6 +1,5 @@
 package com.thoughtworks.sneak.attack.implemtations;
 
-import java.util.HashMap;
 
 import com.thoughtworks.sneak.attack.interfaces.Role;
 
@@ -9,8 +8,9 @@ public class Participant extends Role{
 	private int name;
 	//boolean isKiller;
 	boolean isKilled;
-	static Participant killer;
-	static Participant Healer;
+	static Participant killer; //#2
+	static Participant healer; //#4
+	static Participant sherlock; // #6
 	int Suspected = -1;
 	boolean isSaved = false;
 	
