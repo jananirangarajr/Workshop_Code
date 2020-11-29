@@ -3,25 +3,23 @@ package com.thoughtworks.sneak.attack.implemtations;
 
 import com.thoughtworks.sneak.attack.interfaces.Role;
 
-public class Participant extends Role{
+public class Participant {
 	
 	private int name;
-	//boolean isKiller;
 	boolean isKilled;
-	static Participant killer; //#2
-	static Participant healer; //#4
-	static Participant sherlock; // #6
-	int Suspected = -1;
-	boolean isSaved = false;
+	Role role;
+	int Suspected;
+	boolean isSaved;
 	
 	public Participant() {
 		
 	}
+	
 	Participant(int name) {
 		this.name = name;
 		//this.isKiller = false;
 		this.isKilled = false;
-		initializeRole();
+		role = new Role();
 	}
 	
 	public int getName() {

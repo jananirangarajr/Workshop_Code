@@ -2,11 +2,11 @@ package com.thoughtworks.sneak.attack.interfaces;
 
 import java.util.HashMap;
 
-public abstract class Role {
+public class Role {
 	
 	 HashMap<String, Boolean> roles = new HashMap<>(); 
 	  
-     public void initializeRole() {
+     public Role() {
     	 roles.put("killer", false);
     	 roles.put("innocnet", true);
     	 roles.put("healer", false);

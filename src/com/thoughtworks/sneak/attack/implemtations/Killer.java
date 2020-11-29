@@ -6,15 +6,25 @@ import com.thoughtworks.sneak.attack.util.SneakUtil;
 
 public class Killer extends Participant{
 	
-	//Participant killer = Participant.killer;
+	static Participant killer;
 	
 	//Interation 3
 	//Method to kill one person
+	
+	public static void setKiller(Participant killerObj) {
+		killer = killerObj;
+	}
 	public void kill(ArrayList<Participant> innocentList) {
-		int randomNumber = SneakUtil.getInstance().getRandomNumber(innocentList.size());
-		System.out.println("P"+killer.getName()+" killed P"+innocentList.get(randomNumber).getName());
-		innocentList.get(randomNumber).isKilled=true;
-		innocentList.remove(randomNumber);
+		
+		ArrayList<Participant> killerList = (ArrayList<Participant>) innocentList.clone();
+		killerList.remove(killer);
+		
+		int randomNumber = SneakUtil.getInstance().getRandomNumber(killerList.size()-1);
+		if (!killerList.get(randomNumber).isSaved) {
+			System.out.println("P"+killer.getName()+" killed P"+innocentList.get(randomNumber).getName());
+			innocentList.get(innocentList.indexOf(killerList.get(randomNumber))).isKilled=true;
+			innocentList.remove(innocentList.indexOf(killerList.get(randomNumber)));
+		}
 	}
 	
 	//Iteration 2
@@ -23,7 +33,7 @@ public class Killer extends Participant{
 		int round =1;
 		while (innocents.size() > 1) {
 			System.out.println("Round "+round);
-			int randomNumber = SneakUtil.getInstance().getRandomNumber(innocents.size()); 
+			int randomNumber = SneakUtil.getInstance().getRandomNumber(innocents.size()-1); 
 			System.out.println("P"+killer.getName()+" killed P"+innocents.get(randomNumber).getName());
 			innocents.remove(randomNumber);
 			round++;

@@ -6,15 +6,18 @@ import com.thoughtworks.sneak.attack.util.SneakUtil;
 
 public class Healer extends Participant {
 	
-	//Participant healer = Participant.Healer;
+	static Participant healer; //#4
+	
+	public static void setHealer(Participant healerObj) {
+		healer = healerObj;
+	}
 
 	public void save(ArrayList<Participant> innocents) {
 		
 		if(!healer.isKilled) {
 
-			int randomNumber = SneakUtil.getInstance().getRandomNumber(innocents.size());
+			int randomNumber = SneakUtil.getInstance().getRandomNumber(innocents.size()-1);
 			innocents.get(randomNumber).isSaved = true;
-			innocents.remove(randomNumber);
 			System.out.println("P"+healer.getName()+" heales P"+innocents.get(randomNumber).getName());
 		}
 	}

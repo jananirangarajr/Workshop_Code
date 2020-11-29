@@ -45,13 +45,13 @@ public class SneakAttack {
 		while(true) {
 			host.addInnocents();
 			System.out.println("Round "+(i++));
-			ArrayList<Participant> innocentList = host.getInnocents();
+			ArrayList<Participant> allPlayers = host.getAllPlayers();
 			
-			healer.save(innocentList); //iteration #4
+			healer.save(allPlayers); //iteration #4
 			
-			killer.kill(innocentList); //# iteration 3
+			killer.kill(host.getInnocents()); //# iteration 3
 			
-			sherlock.check(innocentList); // iteration 6
+			sherlock.check(allPlayers); // iteration 6
 			
 			//# iteration 3
 			host.getSuspetedParticipant();
