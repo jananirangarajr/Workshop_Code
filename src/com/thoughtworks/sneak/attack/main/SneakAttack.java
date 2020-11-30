@@ -47,6 +47,10 @@ public class SneakAttack {
 			System.out.println("Round "+(i++));
 			ArrayList<Participant> allPlayers = host.getAllPlayers();
 			
+			if (!host.checkIsGameAlive(allPlayers)) {
+				break;
+			}
+			
 			healer.save(allPlayers); //iteration #4
 			
 			killer.kill(host.getInnocents()); //# iteration 3

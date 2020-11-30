@@ -11,7 +11,7 @@ public class Innocent {
 		ArrayList<Participant> suspectedList = (ArrayList<Participant>) innocentList.clone();
 		for (int i = 0; i < innocentList.size();i++) {
 			suspectedList.remove(i);
-			int randomInt = SneakUtil.getInstance().getRandomNumber(suspectedList.size()-1);
+			int randomInt = SneakUtil.getInstance().getRandomNumber(suspectedList.size()-1==0?1:suspectedList.size()-1);
 			int suspectedName = suspectedList.get(randomInt) .getName();
 			
 			if (innocentList.get(i).Suspected == -1) {

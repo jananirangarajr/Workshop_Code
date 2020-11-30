@@ -188,4 +188,22 @@ public class Coordinator {
 		
 	}
 
+	public boolean checkIsGameAlive(ArrayList<Participant> allPlayers) {
+		
+		if (allPlayers.size() <= 2) {
+			if (allPlayers.size() == 1 && allPlayers.get(0).role.isKiller() == true) {
+				System.out.println("Killer wins");
+			}
+			else if (allPlayers.size() == 2 && allPlayers.indexOf(Killer.killer) >= 0 && allPlayers.indexOf(Healer.healer) >=0 ) {
+				System.out.print("Withdraw");
+			}
+			else {
+				System.out.println("Killer wins");
+			}
+			return false;
+		}
+		
+		return true;
+	}
+
 }
