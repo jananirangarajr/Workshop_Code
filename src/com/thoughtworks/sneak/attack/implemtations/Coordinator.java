@@ -128,6 +128,7 @@ public class Coordinator {
 		for (int i = 0;  i < killParticipants.size(); i++) {
 			int killPersonIndex = killParticipants.get(i);
 			if (participants[killPersonIndex].role.isKiller() && !participants[killPersonIndex].isSaved) {
+				System.out.println("Killer Killed. Match Ends.");
 				isAlive = false;
 			}
 			else if(!participants[killPersonIndex].isKilled && !participants[killPersonIndex].isSaved) {
